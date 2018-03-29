@@ -11,6 +11,7 @@ class Post < ActiveRecord::Base
 end
 
 class Comment < ActiveRecord::Base
+	belongs_to :posts
 end
 
 get '/' do
