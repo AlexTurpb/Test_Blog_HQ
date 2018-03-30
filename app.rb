@@ -33,3 +33,7 @@ post '/new' do
 	@post.save
 	erb :new
 end
+
+get '/post/:id' do
+	erb :post
+end
