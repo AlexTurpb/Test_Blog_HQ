@@ -15,7 +15,9 @@ class Comment < ActiveRecord::Base
 end
 
 
-
+before do 
+	@posts = Post.all
+end
 
 
 get '/' do

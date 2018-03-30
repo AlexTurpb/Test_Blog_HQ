@@ -1,3 +1,14 @@
 <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-	<h2 class="display-4">Index</h2>
+	<h2 class="display-4">Posts Line</h2>
 </div>
+
+</div>
+<div class="container">
+	<% @posts.each do |post| %>
+		<div class="alert alert-dark" role="alert"> 
+			<%= post['post'] %> <hr/>
+			By: <strong><i><%= post['author'] %></i></strong> on: <%= post['created_at'] %> <br/>
+			<a href="/post/<%= post['id'] %>">#<%= post['id'] %> comments</a>
+		</div> 
+	<% end %>
+</div>		
