@@ -1,3 +1,10 @@
 <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-	<h2 class="display-4">Details</h2>
+	<h2 class="display-4">Post # <%=Post.find(params[:id]).id%></h2>
 </div>
+
+<div class="container">
+	<div class="alert alert-dark" role="alert"> 
+		<%=Post.find(params[:id]).post %> <hr/>
+		By: <strong><i><%= Post.find(params[:id]).author %></i></strong> on: <%= Post.find(params[:id]).created_at %> <br/>
+	</div> 
+</div>		

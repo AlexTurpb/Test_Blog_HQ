@@ -14,12 +14,6 @@ class Comment < ActiveRecord::Base
 	belongs_to :posts, :foreign_key => "postID"
 end
 
-
-before do 
-	@posts = Post.all
-end
-
-
 get '/' do
 	erb :index
 end
