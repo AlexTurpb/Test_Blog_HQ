@@ -27,7 +27,7 @@ get '/new' do
 end
 
 post '/new' do
-
-	
+	@post= Post.new params[:post]
+	@post.save
 	erb :new
 end
