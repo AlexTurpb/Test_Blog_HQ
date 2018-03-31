@@ -9,14 +9,20 @@
 	</div> 
 </div>	
 
-
-
-
-
-
-
+<div class="container">
+	<h4>Comments:</h4>
+<div class="container">
+	<% Post.find(params[:id]).comments.each do |comment| %>
+		<div class="alert alert-info"> 
+			<%= comment['comment'] %> <hr/>
+			By: <strong><i><%= comment['author'] %></i></strong> on: <%= comment['created_at'] %> <br/>
+		</div> 
+	<% end %>
+	</div>
+</div>	
 
 <div class="container">
+	<h5>Add new one for # <%=Post.find(params[:id]).id%></h5>
 	<p>
 		<form action="/post/<%=Post.find(params[:id]).id%>" method="POST">
 			<div class="form-group">
@@ -24,7 +30,7 @@
 			</div>
 			<div class="form-group">
 				<textarea name="comment[comment]" rows="9" class="form-control" placeholder="Add comment here:"></textarea>
-			</div>
+			</div>	
 			<div class="form-group">
 				<button type="submit" class="btn btn-primary">Comment</button>
 			</div>
