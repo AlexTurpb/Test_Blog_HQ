@@ -15,6 +15,8 @@ class Post < ActiveRecord::Base
  end
 
 class Comment < ActiveRecord::Base
+	validates :comment, presence: true
+	validates :author, presence: true
 	belongs_to :posts, :foreign_key => "post_id"
 end
 
@@ -42,8 +44,12 @@ get '/post/:id' do
 end
 
 post '/post/:id' do
-	
 	@comment= Comment.new params[:comment]
-	@comment.save
-	erb :post
+	if @comment.save
+		@info = "Comment saved"
+		erb :post
+	else
+		@error = @comment.errors.full_messages.first
+		erb :post
+	end
 end
