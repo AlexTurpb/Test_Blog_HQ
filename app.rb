@@ -46,7 +46,7 @@ end
 post '/post/:id' do
 	@comment= Comment.new params[:comment]
 	if @comment.save
-		@info = "Comment saved"
+		@info = params[:comment]
 		erb :post
 	else
 		@error = @comment.errors.full_messages.first
