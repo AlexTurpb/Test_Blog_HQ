@@ -44,6 +44,7 @@ get '/post/:id' do
 end
 
 post '/post/:id' do
+	params[:comment].store("post_id", params[:id])
 	@comment= Comment.new params[:comment]
 	if @comment.save
 		@info = params[:comment]
