@@ -7,9 +7,11 @@ require 'sinatra/activerecord'
 set :database, 'sqlite3:blog_hq.db'
 
 class Post < ActiveRecord::Base
+	validates :post, presence: true
+	validates :author, presence: true
 	has_many :comments, :foreign_key => "post_id"
-	validates :post, presense: true
-	validates :author, presense: true
+	
+	
  end
 
 class Comment < ActiveRecord::Base
@@ -26,8 +28,13 @@ end
 
 post '/new' do
 	@post= Post.new params[:post]
-	@post.save
-	erb :new
+	if @post.save
+		@info = 'Post saved'
+		erb :new
+	else
+		@error = @post.errors.full_messages.first
+		erb :new
+	end
 end
 
 get '/post/:id' do
