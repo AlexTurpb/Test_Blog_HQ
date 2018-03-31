@@ -8,6 +8,8 @@ set :database, 'sqlite3:blog_hq.db'
 
 class Post < ActiveRecord::Base
 	has_many :comments, :foreign_key => "post_id"
+	validates :post, presense: true
+	validates :author, presense: true
  end
 
 class Comment < ActiveRecord::Base
