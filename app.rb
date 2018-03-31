@@ -31,3 +31,10 @@ end
 get '/post/:id' do
 	erb :post
 end
+
+post '/post/:id' do
+	
+	@comment= Comment.new params[:comment]
+	@comment.save
+	erb :post
+end

@@ -14,7 +14,7 @@
 
 <div class="container">
 	<p>
-		<form action="/post/<%=Post.find(params[:id]).id%>" method="POST">
+		<form action="/post/<%=Post.find(params[:id]).id%>>" method="POST">
 			<div class="form-group">
 				<input name="comment[author]" type="text" class="form-control" id="exampleInputEmail1" placeholder="Nickname:">
 			</div>
