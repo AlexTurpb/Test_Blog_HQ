@@ -24,16 +24,16 @@
 <div class="container">
 	<h5>Add new one for # <%=Post.find(params[:id]).id%></h5>
 	<p>
-		<form action="/post/<%=Post.find(params[:id]).id%>" method="POST">
-			<div class="form-group">
-				<input name="comment[author]" type="text" class="form-control" id="exampleInputEmail1" placeholder="Nickname:">
-			</div>
-			<div class="form-group">
-				<textarea name="comment[comment]" rows="9" class="form-control" placeholder="Add comment here:"></textarea>
-			</div>	
-			<div class="form-group">
-				<button type="submit" class="btn btn-primary">Comment</button>
-			</div>
-		</form>
+	<form action="/post/<%=Post.find(params[:id]).id%>" method="POST">
+		<div class="form-group">
+			<input name="comment[author]" type="text" class="form-control" id="exampleInputEmail1" placeholder="Nickname:" value="<%=@co.author%>">
+		</div>
+		<div class="form-group">
+			<textarea name="comment[comment]" rows="9" class="form-control" placeholder="Add comment here:"></textarea>
+		</div>	
+		<div class="form-group">
+			<button type="submit" class="btn btn-primary">Comment</button>
+		</div>
+	</form>
 	</p>
 </div>

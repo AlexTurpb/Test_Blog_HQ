@@ -18,37 +18,40 @@ class Comment < ActiveRecord::Base
 	belongs_to :posts, :foreign_key => "post_id"
 end
 
+
 get '/' do
 	erb :index
 end
 
 get '/new' do
+	@po= Post.new
 	erb :new
 end
 
 post '/new' do
-	@post= Post.new params[:post]
-	if @post.save
+	@po= Post.new params[:post]
+	if @po.save
 		@info = 'Post saved'
 		erb :new
 	else
-		@error = @post.errors.full_messages.first
+		@error = @po.errors.full_messages.first
 		erb :new
 	end
 end
 
 get '/post/:id' do
+	@co= Comment.new
 	erb :post
 end
 
 post '/post/:id' do
 	params[:comment].store("post_id", params[:id])
-	@comment= Comment.new params[:comment]
-	if @comment.save
+	@co= Comment.new params[:comment]
+	if @co.save
 		@info = "Comment successful"
 		erb :post
 	else
-		@error = @comment.errors.full_messages.first
+		@error = @co.errors.full_messages.first
 		erb :post
 	end
 end
