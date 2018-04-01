@@ -24,12 +24,12 @@ get '/' do
 end
 
 get '/new' do
-	@po= Post.new
+	@po = Post.new
 	erb :new
 end
 
 post '/new' do
-	@po= Post.new params[:post]
+	@po = Post.new params[:post]
 	if @po.save
 		@info = 'Post saved'
 		erb :new
@@ -40,13 +40,13 @@ post '/new' do
 end
 
 get '/post/:id' do
-	@co= Comment.new
+	@co = Comment.new
 	erb :post
 end
 
 post '/post/:id' do
 	params[:comment].store("post_id", params[:id])
-	@co= Comment.new params[:comment]
+	@co = Comment.new params[:comment]
 	if @co.save
 		@info = "Comment successful"
 		erb :post
